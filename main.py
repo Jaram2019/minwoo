@@ -64,9 +64,8 @@ def mainmenu():
     for i in range(len(sec),len(fir)):
         print("%30s"%(fir[i]))
 
-    print("검색하고 싶은 단어를 입력해주세요! g 검색어를 입력하면 모바일 리듬게임을 확인하실 수 있습니다.")
-    search = input("검색> ")
 
+def search_func(search):
     if(search in main_list):
         croll(main_list[search])
     elif search == 'g':
@@ -84,9 +83,17 @@ def mainmenu():
                     print(link.text.strip())
 
     else:
-        print("해당 검색어는 존재하지 않습니다.")
+        print("\n해당 검색어는 존재하지 않습니다.\n")
 
+def searching():
+        print("\n검색하고 싶은 단어를 입력해주세요! g 검색어를 입력하면 모바일 리듬게임을 확인하실 수 있습니다.")
+        search = input("검색(프로그램 종료 : q)> ")
+        return search
 
 
 maintitle()
 mainmenu()
+command = searching()
+while(command != 'q'):
+    search_func(command)
+    command = searching()
