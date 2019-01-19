@@ -99,10 +99,10 @@ def search_func(search):
 
 def searching():
         print("\n검색하고 싶은 단어를 입력해주세요! g 검색어를 입력하면 모바일 리듬게임을 확인하실 수 있습니다.")
-        search = input("검색(프로그램 종료 : q, 메뉴 다시보기 : r, 내용 추가 : i)> ")
+        search = input("검색(프로그램 종료 : q, 메뉴 다시보기 : r, 내용 추가 : i, 문서 추가 : p)> ")
         return search
 
-def insert():
+def add():
     file=str(input("추가할 파일 위치를 입력해주세요.>"))
     f1 = open(file, 'r')
 
@@ -148,6 +148,13 @@ def read_disk():
 
     return 0
 
+def add_menu():
+    menu_name=str(input("추가할 문서의 이름을 입력해주세요.>"))
+    url=str(input("추가할 문서의 주소를 입력해주세요.>"))
+    main_list[menu_name]=url
+    add_list[menu_name]=[]
+
+
 maintitle()
 mainmenu()
 read_disk()
@@ -157,7 +164,9 @@ while(command != 'q'):
         print()
         mainmenu()
     elif(command =='i'):
-        insert()
+        add()
+    elif(command == 'p'):
+        add_menu()
     else:
         search_func(command)
     command = searching()
